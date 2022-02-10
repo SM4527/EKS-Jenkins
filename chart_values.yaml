@@ -1,0 +1,87 @@
+# https://github.com/jenkinsci/helm-charts/blob/main/charts/jenkins/values.yaml
+persistence:
+  enabled: true
+  size: "3Gi"
+controller:
+# tag: "jdk11"
+# image: "jenkins/jenkins"
+  ingress:
+    enabled: true
+#   ingressClassName: nginx
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      kubernetes.io/tls-acme: "false"
+    hostName: jenkins.devopsdemos.com 
+    jenkinsUrlProtocol: "https"
+    jenkinsUrl: "jenkins.devopsdemos.com"
+# adminPassword: 
+  resources:
+    requests:
+      cpu: "50m"
+      memory: "512Mi"
+    limits:
+      cpu: "1"
+      memory: "1Gi"
+  overwritePlugins: true
+  installPlugins:
+    - kubernetes:1.31.3
+    - workflow-aggregator:2.6
+    - git:4.10.2
+    - configuration-as-code:1.55.1
+    - github-oauth:0.37
+    - github-branch-source:2.11.4
+    - blueocean:1.25.2
+    - matrix-auth:3.0.1
+  healthProbes: false
+  csrf:
+    defaultCrumbIssuer:
+      enabled: true
+      proxyCompatability: true
+      excludeClientIPFromCrumb: true
+# https://plugins.jenkins.io/github-oauth/
+# https://blog.seancheng.space/posts/how-to-use-jenkins-configuration-as-code/
+# https://github.com/jenkinsci/helm-charts/blob/main/charts/jenkins/values.yaml
+# https://plugins.jenkins.io/github-branch-source/
+# https://github.com/jenkinsci/github-branch-source-plugin/blob/master/docs/github-app.adoc
+  JCasC:
+    enabled: true
+    configScripts:      
+      main-config: |
+        jenkins:
+          securityRealm:
+            github:
+              githubWebUri: "https://github.com"
+              githubApiUri: "https://api.github.com"
+              clientID: ""
+              clientSecret: ""
+              oauthScopes: "read:org,user:email"
+          authorizationStrategy: 
+            globalMatrix:
+              permissions:
+                - "Overall/Read:anonymous"
+                - "Overall/Administer:authenticated"   
+        credentials:
+          system:
+            domainCredentials:
+              - credentials:
+                - gitHubApp:
+                    appID: ""
+                    description: "EKS jenkins GitHub app"
+                    id: ""
+                    privateKey: |
+                      -----BEGIN PRIVATE KEY-----
+
+                      -----END PRIVATE KEY-----              
+      kube-config: |
+              jenkins:
+                clouds:
+                  - kubernetes:
+                      name: "main-k8s-cluster"
+                      serverUrl: "https://kubernetes.default"
+                      # serverCertificate: "serverCertificate"
+                      skipTlsVerify: true
+                      # When running the Jenkins master outside of Kubernetes you will need to set the credential to secret text
+                      # credentialsId: "advanced-k8s-credentials"
+                      namespace: "cicd"
+                      jenkinsUrl: "http://jenkins:8080/"
+                      jenkinsTunnel: "jenkins-agent:50000"
