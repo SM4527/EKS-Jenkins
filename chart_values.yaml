@@ -70,7 +70,6 @@ controller:
                     id: ""
                     privateKey: |
                       -----BEGIN PRIVATE KEY-----
-
                       -----END PRIVATE KEY-----              
       kube-config: |
               jenkins:
