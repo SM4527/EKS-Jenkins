@@ -2,7 +2,7 @@
 
 ![Kubernetes](https://img.shields.io/badge/kubernetes-%23326ce5.svg?style=for-the-badge&logo=kubernetes&logoColor=white) ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white) ![Terraform](https://img.shields.io/badge/terraform-%235835CC.svg?style=for-the-badge&logo=terraform&logoColor=white) ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white) ![Nginx](https://img.shields.io/badge/nginx-%23009639.svg?style=for-the-badge&logo=nginx&logoColor=white) ![Jenkins](https://img.shields.io/badge/jenkins-%232C5263.svg?style=for-the-badge&logo=jenkins&logoColor=white) ![Shell Script](https://img.shields.io/badge/shell_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white)
 
-![Stars](https://img.shields.io/github/stars/SM4527/EKS-Jenkins?style=for-the-badge) ![Forks](https://img.shields.io/github/forks/SM4527/EKS-Jenkins?style=for-the-badge) ![Issues](https://img.shields.io/github/issues/SM4527/EKS-Jenkins?style=for-the-badge) ![License](https://img.shields.io/github/license/SM4527/EKS-Jenkins?style=for-the-badge) [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/Tamizhan99.svg?style=for-the-badge&label=Follow%20%40Tamizhan99)](https://twitter.com/Tamizhan99) 
+![Stars](https://img.shields.io/github/stars/SM4527/EKS-Jenkins?style=for-the-badge) ![Forks](https://img.shields.io/github/forks/SM4527/EKS-Jenkins?style=for-the-badge) ![Issues](https://img.shields.io/github/issues/SM4527/EKS-Jenkins?style=for-the-badge) ![License](https://img.shields.io/github/license/SM4527/EKS-Jenkins?style=for-the-badge)
 
 </p>
 
@@ -13,6 +13,14 @@ EKS-Jenkins-CICD  [![Tweet](https://img.shields.io/twitter/url/http/shields.io.s
 ## Description
 
 Deploy Jenkins on an EKS cluster using Terraform & Helm. Authentication is handled by the GitHub OAuth plugin. Authorizations in handled by the Matrix-Auth plugin. Setup Github App and Automate CICD by Scanning GitHub Repos for the presence of a Jenkinsfile using GitHub Branch Source plugin. Finally, Configure Kubernetes Agent which will create Pods on the EKS Cluster to execute the various Pipeline stages.
+
+<p align="center">
+
+![image](https://user-images.githubusercontent.com/78129381/153651039-71dcf7c4-d22b-49d9-995d-5622409bb7ed.png)
+
+![image](https://user-images.githubusercontent.com/78129381/153651338-928b6a90-b37f-465f-8e91-1ba7ee4019fd.png)
+
+</p>
 
 ## Getting Started
 
