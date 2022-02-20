@@ -12,7 +12,7 @@ EKS-Jenkins-CICD  [![Tweet](https://img.shields.io/twitter/url/http/shields.io.s
 
 ## Description
 
-Deploy Jenkins on an EKS cluster using Terraform & Helm. Authentication is handled by the GitHub OAuth plugin. Authorizations in handled by the Matrix-Auth plugin. Setup Github App and Automate CICD by Scanning GitHub Repos for the presence of a Jenkinsfile using GitHub Branch Source plugin. Finally, Configure Kubernetes Agent which will create Pods on the EKS Cluster to execute the various Pipeline stages.
+Automate CICD by deploying Jenkins on an AWS EKS Kubernetes cluster using Terraform and Helm.Leverage Jenkins Configuration as Code (JCasC) to configure Jenkins.Authentication and Authorization are using the GitHub OAuth plugin and the Matrix-Auth plugin.Automate CICD by setting up GitHub App and periodically scanning the GitHub Repos for the presence of a Jenkinsfile using the GitHub Branch Source plugin. Finally, Configure Kubernetes Agent to create Pods on the EKS Cluster to execute the various Pipeline stages.
 
 <p align="center">
 
@@ -100,7 +100,7 @@ docker-compose run --rm terraform workspace select default
 ./run-docker-compose.sh kubectl get cm -n cicd
 ```
 
-* Login to Jenkins using the Domain Https URL, prefixed by "jenkins." and login using your GitHub username and password to proceed with further steps below.  Authentication is handled by the GitHub OAuth plugin and Authorization is handled by the Matrix-Auth plugin.
+* Login to Jenkins using your Domain Https URL, prefixed by "jenkins." and enter your GitHub username and password to proceed with further steps below.
 
 * Start a new item, select Github Organization, select "Github App" Credential, and your Github username or Organization as owner and apply. Check out the exact steps below for the Github-Branch-Source plugin.
 
